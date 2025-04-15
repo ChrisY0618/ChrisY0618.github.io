@@ -30,6 +30,12 @@
     <content type="html"><![CDATA[<h1 id="✅-Linux-驱动中阻塞-I-O-完整流程总结"><a href="#✅-Linux-驱动中阻塞-I-O-完整流程总结" class="headerlink" title="✅ Linux 驱动中阻塞 I&#x2F;O 完整流程总结"></a>✅ Linux 驱动中阻塞 I&#x2F;O 完整流程总结</h1><hr><h2 id="📌-阶段一：初始化等待队列（设备初始化时）"><a href="#📌-阶段一：初始化等待队列（设备初始化时）" class="headerlink" title="📌 阶段一：初始化等待队列（设备初始化时）"></a>📌 阶段一：初始化等待队列（设备初始化时）</h2><p><strong>目的：</strong> 准备一个等待队列，用于后续让进程挂起&#x2F;唤醒</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">wait_queue_head_t</span> r_wait;               <span class="hljs-comment">// 声明等待队列头</span><br>init_waitqueue_head(&amp;r_wait);           <span class="hljs-comment">// 初始化等待队列</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>Linux driver</category>
+      
+    </categories>
+    
     
   </entry>
   
