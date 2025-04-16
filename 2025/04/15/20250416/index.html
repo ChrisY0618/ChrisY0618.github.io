@@ -21,19 +21,19 @@
   
     <meta name="description" content="I2C、SPI和UART串行通信协议对比1. I2C通信特点： 多主机和多从机   两根线：SDA（数据线）和SCL（时钟线）   通信速率：100kbps（标准模式）至3.4Mbps（高速模式）   地址模式：7位或10位设备地址  通信时序： 起始信号：SDA从高电平拉低（SCL保持高电平）   设备地址：发送7位地址 + 读写位（0写&#x2F;1读）   数据传输：每字节后接收方返回ACK">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20250416">
+<meta property="og:title" content="SPI,IIC,UART对比">
 <meta property="og:url" content="https://chrisy0618.github.io/2025/04/15/20250416/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="I2C、SPI和UART串行通信协议对比1. I2C通信特点： 多主机和多从机   两根线：SDA（数据线）和SCL（时钟线）   通信速率：100kbps（标准模式）至3.4Mbps（高速模式）   地址模式：7位或10位设备地址  通信时序： 起始信号：SDA从高电平拉低（SCL保持高电平）   设备地址：发送7位地址 + 读写位（0写&#x2F;1读）   数据传输：每字节后接收方返回ACK">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-15T09:24:30.000Z">
-<meta property="article:modified_time" content="2025-04-16T13:32:57.473Z">
+<meta property="article:modified_time" content="2025-04-16T13:52:47.141Z">
 <meta property="article:author" content="Chris.Y">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>20250416 - Hexo</title>
+  <title>SPI,IIC,UART对比 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="20250416"></span>
+            <span id="subtitle" data-typed-text="SPI,IIC,UART对比"></span>
           
         </div>
 
@@ -270,7 +270,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">20250416</h1>
+            <h1 id="seo-header">SPI,IIC,UART对比</h1>
             
             
               <div class="markdown-body">
@@ -287,7 +287,7 @@
 <li><strong>数据传输</strong>：每字节后接收方返回ACK&#x2F;NACK  </li>
 <li><strong>停止信号</strong>：SDA从低电平拉高（SCL保持高电平）</li>
 </ol>
-<h4 id="时序示例（发送0x12到地址0x50）："><a href="#时序示例（发送0x12到地址0x50）：" class="headerlink" title="时序示例（发送0x12到地址0x50）："></a>时序示例（发送<code>0x12</code>到地址<code>0x50</code>）：</h4><p>时间  0      1     2   3  4   5   6   7  8   9  10  11  12  13<br>       __    __   __  __  __  __  __  __  __  __  __  __<br>SDA  |  S  |  0  |  1  |  0  |  1  |  0  |  1  |  0  |  1  |  0  |  1 |  0 |  P<br>        ↑ ↓     ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↓ ↑<br>SCL  —– ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑</p>
+<h4 id="时序示例（发送0x12到地址0x50）："><a href="#时序示例（发送0x12到地址0x50）：" class="headerlink" title="时序示例（发送0x12到地址0x50）："></a>时序示例（发送<code>0x12</code>到地址<code>0x50</code>）：</h4><p>时间  0      1     2   3  4   5   6   7  8   9  10  11  12  13<br>       __    __   __  __  __  __  __  __  __  __  __  __<br>SDA  |  S  |  0  |  1  |  0  |  1  |  0  |  1  |  0  |  1  |  0  |  1 |  0 |  P<br>        ↑    ↓     ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↓ ↑<br>SCL  —– ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑</p>
 <ul>
 <li><strong>S</strong>：起始条件  </li>
 <li><strong>P</strong>：停止条件</li>
@@ -391,7 +391,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux-code/" class="category-chain-item">Linux code</a>
+  <a href="/categories/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91/" class="category-chain-item">裸机开发</a>
   
   
 
@@ -411,7 +411,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>20250416</div>
+      <div>SPI,IIC,UART对比</div>
       <div>https://chrisy0618.github.io/2025/04/15/20250416/</div>
     </div>
     <div class="license-meta">
