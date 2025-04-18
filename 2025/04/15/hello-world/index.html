@@ -19,21 +19,22 @@
   <meta name="author" content="Chris.Y">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="✅ IIC启动流程I2C 启动流程概述1总线空闲状态：​在通信开始之前，I2C总线处于空闲状态，即SDA和SCL线都处于高电平。​2发送启动信号（START）：​主设备在SCL线为高电平时，将SDA线从高电平拉低，形成启动信号。​这一过程标志着通信的开始。​3发送设备地址和读写位：​启动信号后，主设备发送目标设备的地址（通常为7位）和读写位。​读写位为0表示写操作，为1表示读操作。​4等待应答信号">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="海康BSP嵌入式开发实习面试经验">
 <meta property="og:url" content="https://chrisy0618.github.io/2025/04/15/hello-world/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="✅ IIC启动流程I2C 启动流程概述1总线空闲状态：​在通信开始之前，I2C总线处于空闲状态，即SDA和SCL线都处于高电平。​2发送启动信号（START）：​主设备在SCL线为高电平时，将SDA线从高电平拉低，形成启动信号。​这一过程标志着通信的开始。​3发送设备地址和读写位：​启动信号后，主设备发送目标设备的地址（通常为7位）和读写位。​读写位为0表示写操作，为1表示读操作。​4等待应答信号">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-15T08:48:09.658Z">
-<meta property="article:modified_time" content="2025-04-15T08:46:25.462Z">
+<meta property="article:published_time" content="2025-04-15T09:24:30.000Z">
+<meta property="article:modified_time" content="2025-04-18T13:46:34.526Z">
 <meta property="article:author" content="Chris.Y">
+<meta property="article:tag" content="面试经验">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - Hexo</title>
+  <title>海康BSP嵌入式开发实习面试经验 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="海康BSP嵌入式开发实习面试经验"></span>
           
         </div>
 
@@ -210,7 +211,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-15 16:48" pubdate>
+        <time datetime="2025-04-15 17:24" pubdate>
           2025年4月15日 下午
         </time>
       </span>
@@ -222,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          2.4k 字
         
       </span>
     
@@ -233,7 +234,7 @@
         
         
         
-          1 分钟
+          21 分钟
         
       </span>
     
@@ -270,24 +271,45 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">海康BSP嵌入式开发实习面试经验</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="✅-IIC启动流程"><a href="#✅-IIC启动流程" class="headerlink" title="✅ IIC启动流程"></a>✅ IIC启动流程</h1><p>I2C 启动流程概述<br>1总线空闲状态：​在通信开始之前，I2C总线处于空闲状态，即SDA和SCL线都处于高电平。​<br>2发送启动信号（START）：​主设备在SCL线为高电平时，将SDA线从高电平拉低，形成启动信号。​这一过程标志着通信的开始。​<br>3发送设备地址和读写位：​启动信号后，主设备发送目标设备的地址（通常为7位）和读写位。​读写位为0表示写操作，为1表示读操作。​<br>4等待应答信号（ACK）：​从设备接收到地址和读写位后，返回一个应答信号（ACK）。​如果从设备未响应，主设备可以根据需要进行重试或处理错误。​<br>5数据传输：​主设备根据读写位的设置，开始与从设备进行数据的读写操作。​每传输一个字节后，接收方返回一个应答信号。​<br>6发送停止信号（STOP）：​数据传输完成后，主设备在SCL线为高电平时，将SDA线从低电平拉高，形成停止信号，标志着通信的结束。<br>🔹特别注意：IIC信号在数据传输过程中，当SCL&#x3D;1高电平时，数据线SDA必须保持稳定状态，不允许有电平跳变，只有在时钟线上的信号为低电平期间，数据线上的高电平或低电平状态才允许变化。</p>
+<h1 id="✅-C语言关键字"><a href="#✅-C语言关键字" class="headerlink" title="✅ C语言关键字"></a>✅ C语言关键字</h1><h2 id="voltaile"><a href="#voltaile" class="headerlink" title="voltaile"></a>voltaile</h2><p>🔹防止编译器优化：​编译器可能会将变量存储在寄存器中，以提高访问效率。​但如果该变量的值可能被外部因素（如硬件中断、其他线程或外部设备）改变，编译器的优化可能导致程序行为异常。​使用 volatile 修饰的变量，编译器每次都会从内存中读取其值，而非使用寄存器缓存的值。​<br>🔹保证顺序性：​volatile 修饰的变量的读写操作不会被编译器重排序，确保代码中对这些变量的操作顺序与源代码中的顺序一致。<br>🔹硬件寄存器访问：​在嵌入式系统中，直接访问硬件寄存器时，寄存器的值可能随时发生变化，使用 volatile 可以确保每次访问都从硬件读取最新值。​<br>🔹中断服务例程（ISR）：​中断处理程序可能会修改某些变量的值，使用 volatile 可以确保主程序在访问这些变量时获取最新值。​<br>🔹多线程编程：​在多线程环境中，多个线程可能同时访问同一变量，使用 volatile 可以确保每个线程都能看到变量的最新值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">volatile</span> <span class="hljs-type">int</span> flag = <span class="hljs-number">0</span>;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">interrupt_handler</span><span class="hljs-params">()</span> &#123;<br>    flag = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 中断服务程序修改 flag 的值</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">while</span> (!flag) &#123;<br>        <span class="hljs-comment">// 等待中断处理程序将 flag 设置为 1</span><br>    &#125;<br>    <span class="hljs-comment">// 执行后续操作</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在上述代码中，flag 被 volatile 修饰，确保主程序每次访问 flag 时都从内存中读取其最新值，而非使用寄存器缓存的值。</p>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>🔹1. 修饰局部变量：保持变量的持久性<br>当 static 用于修饰局部变量时，该变量的生命周期将持续整个程序运行期间，但其作用域仍限于定义它的函数内部。​这意味着变量在函数调用之间保持其值，而不是每次调用时重新初始化。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">count_calls</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Function called %d times\n&quot;</span>, ++count);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    count_calls();<br>    count_calls();<br>    count_calls();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">Function called <span class="hljs-number">1</span> times<br>Function called <span class="hljs-number">2</span> times<br>Function called <span class="hljs-number">3</span> times<br><br></code></pre></td></tr></table></figure>
+<p>在上述代码中，count 变量在函数 count_calls 的多次调用之间保持其值，实现了对函数调用次数的统计。</p>
+<p>🔹2. 修饰全局变量和函数：限制作用域<br>当 static 用于修饰全局变量或函数时，它将限制该变量或函数的作用域仅限于定义它的源文件（即翻译单元）。​这意味着其他源文件无法通过 extern 关键字访问这些变量或函数，从而避免了命名冲突。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// file1.c</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> secret = <span class="hljs-number">42</span>;<br><br><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">show_secret</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The secret is %d\n&quot;</span>, secret);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    show_secret();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>在另一个源文件中，尝试访问 secret 或 show_secret 将导致链接错误，因为它们的作用域被限制在 file1.c 中。</p>
+<p>🔹3. 修饰类成员（C++）：实现类级别的共享<br>在 C++ 中，static 可以用于修饰类的成员变量和成员函数，使其成为类级别的成员，而非实例级别的成员。​这意味着所有类的实例共享同一份静态成员。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// file1.c</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> &#123;</span><br>public:<br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> count;<br><br>    Counter() &#123;<br>        ++count;<br>    &#125;<br>&#125;;<br><br><span class="hljs-type">int</span> Counter::count = <span class="hljs-number">0</span>;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    Counter a;<br>    Counter b;<br>    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Number of Counter instances: &quot;</span> &lt;&lt; Counter::count &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">Number of Counter instances: <span class="hljs-number">2</span><br><br></code></pre></td></tr></table></figure>
+<p>在上述代码中，count 是一个静态成员变量，所有 Counter 类的实例共享同一份 count 变量。</p>
+<p>🔹4. 修饰函数参数（C99）：指定数组的最小大小<br>在 C99 标准中，static 可以用于修饰函数参数，指定数组参数的最小大小。​这有助于编译器进行更严格的类型检查。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">process_data</span><span class="hljs-params">(<span class="hljs-type">int</span> data[<span class="hljs-type">static</span> <span class="hljs-number">10</span>])</span> &#123;<br>    <span class="hljs-comment">// 处理数据</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> arr[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>    process_data(arr);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>在上述代码中，data 参数被声明为至少包含 10 个元素的数组，编译器将检查传递给 process_data 函数的数组是否满足这一要求。</p>
+<h1 id="✅-C语言编程题"><a href="#✅-C语言编程题" class="headerlink" title="✅ C语言编程题"></a>✅ C语言编程题</h1><h2 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h2><p>以下两个结构体分别占用多少内存</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">student</span> &#123;</span><br>    <span class="hljs-type">int</span> no;       <span class="hljs-comment">//学号</span><br>    <span class="hljs-type">char</span> name;    <span class="hljs-comment">//姓名</span><br>    <span class="hljs-type">short</span> sex;    <span class="hljs-comment">//性别   </span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">teach</span> &#123;</span><br>    <span class="hljs-type">char</span> no;       <span class="hljs-comment">//学号</span><br>    <span class="hljs-type">int</span> name;    <span class="hljs-comment">//姓名</span><br>    <span class="hljs-type">short</span> sex;    <span class="hljs-comment">//性别</span><br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<p>🔹student内存布局分析（假设起始地址是 0）：<br>no（int）：占 0-3 字节（对齐到 4 字节）。<br>name（char）：占 4 字节（对齐到 1 字节，无需填充）。<br>sex（short）：需要对齐到 2 字节，所以必须在地址 6 开始（因为地址 5 未对齐到 2）。因此：<br>在 name（地址 4）后插入 1 字节填充（地址 5）。<br>sex 占 6-7 字节。<br>总大小：0-7 共 8 字节，且 8 是最大成员 int（4 字节）的整数倍，无需末尾填充。</p>
+<p>🔹teach内存布局分析（假设起始地址是 0）：<br>no（char）：占 0 字节（对齐到 1 字节）。<br>name（int）：需要对齐到 4 字节，所以必须在地址 4 开始。因此：在 no（地址 0）后插入 3 字节填充（地址 1-3）。<br>name 占 4-7 字节。<br>sex（short）：占 8-9 字节（对齐到 2 字节，地址 8 已对齐）。<br>总大小：当前已用 0-9 共 10 字节，但结构体总大小必须是最大成员 int（4 字节）的整数倍。<br>因此：在 sex（地址 9）后插入 2 字节填充（地址 10-11），使总大小为 12 字节（12 是 4 的倍数）。</p>
+<h2 id="malloc（记不太清了，感觉不会这么简单）"><a href="#malloc（记不太清了，感觉不会这么简单）" class="headerlink" title="malloc（记不太清了，感觉不会这么简单）"></a>malloc（记不太清了，感觉不会这么简单）</h2><p>以下代码输出结果</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>* p = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br><span class="hljs-keyword">if</span> (p== <span class="hljs-literal">NULL</span>) &#123;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Memory allocation failed\n&quot;</span>);<br><span class="hljs-keyword">return</span> <span class="hljs-number">1</span>；<span class="hljs-comment">//返回非零值表示错误</span><br>&#125;<br>*p= <span class="hljs-number">12345</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;result = %d\n”, *p);</span><br><span class="hljs-string">free（p)；//使用完毕后释放内存</span><br><span class="hljs-string">return 0;</span><br></code></pre></td></tr></table></figure>
+<p>输出 result &#x3D;12345</p>
+<h1 id="FreeRTOS任务调度"><a href="#FreeRTOS任务调度" class="headerlink" title="FreeRTOS任务调度"></a>FreeRTOS任务调度</h1><h2 id="FreeRTOS是怎么进行调度的"><a href="#FreeRTOS是怎么进行调度的" class="headerlink" title="FreeRTOS是怎么进行调度的"></a>FreeRTOS是怎么进行调度的</h2><p>FreeRTOS 的任务调度遵循优先级调度的原则，其中高优先级的任务优先执行。当任务调度器决定哪个任务运行时，它会选择优先级最高的就绪任务。<br>任务优先级<br>每个任务都具有一个优先级，优先级数值较大的任务优先级较高。任务的优先级是在创建任务时指定的，可以在运行时通过 vTaskPrioritySet() 函数动态修改任务的优先级。<br>调度器行为<br>🔹抢占式调度：如果高优先级任务变为就绪状态，调度器会立即中断当前正在运行的低优先级任务，切换到高优先级任务执行。<br>🔹协作式调度：任务在执行时不会被抢占，除非它显式地调用 taskYIELD() 或其他类似的 API 来让出 CPU 给其他任务。<br>FreeRTOS 中，任务可以通过时间片轮转的方式调度，除非某个任务被标记为“挂起”或“阻塞”，此时它不会被调度。</p>
+<h2 id="高优先级任务一直运行会不会霸占CPU资源"><a href="#高优先级任务一直运行会不会霸占CPU资源" class="headerlink" title="高优先级任务一直运行会不会霸占CPU资源"></a>高优先级任务一直运行会不会霸占CPU资源</h2><p>如果 FreeRTOS 中的高优先级任务长时间占用 CPU 而不主动让出控制权，低优先级任务将无法获得执行机会，导致 CPU 资源被高优先级任务“霸占”。​<br>🧠 为什么高优先级任务会“霸占”CPU？<br>在 FreeRTOS 中，任务调度遵循优先级原则：优先级高的任务优先执行。如果高优先级任务没有被挂起、阻塞或主动让出 CPU，它将持续占用 CPU，导致其他任务无法执行。<br>⚠️ 可能导致的问题<br>任务饥饿：​低优先级任务长时间无法获得 CPU 时间，可能导致系统响应迟缓或实时性差。​<br>系统不稳定：​某些低优先级任务可能负责关键功能（如通信、数据采集等），长时间无法执行可能导致系统功能异常。<br>✅ 如何避免“霸占”CPU？<br>使用 vTaskDelay() 或 vTaskDelayUntil()：​让任务主动延时，释放 CPU 给其他任务。​<br>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">vTaskDelay(pdMS_TO_TICKS(<span class="hljs-number">10</span>));  <span class="hljs-comment">// 延时 10 毫秒</span><br><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>使用 taskYIELD()：​在任务中适当位置调用，主动让出 CPU 给同优先级的其他任务。​<br>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">taskYIELD();  <span class="hljs-comment">// 主动让出 CPU</span><br></code></pre></td></tr></table></figure>
+<p>合理设计任务优先级：​确保高优先级任务只处理紧急或实时性要求高的任务，其他任务使用较低优先级。​<br>使用互斥机制：​避免高优先级任务长时间占用共享资源，导致低优先级任务无法访问</p>
 
                 
               </div>
@@ -296,6 +318,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/object-Object/" class="category-chain-item">[object Object]</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/" class="print-no-link">#面试经验</a>
+      
+    </div>
   
 </div>
 
@@ -305,7 +355,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
+      <div>海康BSP嵌入式开发实习面试经验</div>
       <div>https://chrisy0618.github.io/2025/04/15/hello-world/</div>
     </div>
     <div class="license-meta">
@@ -350,15 +400,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/15/20250415/" title="阻塞I/O笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">阻塞I/O笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2025/04/15/20250416/" title="SPI,IIC,UART对比">
+                        <span class="hidden-mobile">SPI,IIC,UART对比</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
