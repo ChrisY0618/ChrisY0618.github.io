@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chris.Y">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="自我介绍1介绍项目2项目当中遇到的难点以及怎么解决的介绍UART IIC SPI CAN通信协议详见 https:&#x2F;&#x2F;blog.csdn.net&#x2F;Mr_Guan&#x2F;article&#x2F;details&#x2F;133324610?ops_request_misc&#x3D;&amp;request_id&#x3D;&amp;biz_id&#x3D;102&amp;utm_term&#x3D;%E5%9B%9B%E7%A7%8D%E9%80%9A%E4%">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华勤驱动开发面试经验">
+<meta property="og:url" content="https://chrisy0618.github.io/2025/05/09/huaqin/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="自我介绍1介绍项目2项目当中遇到的难点以及怎么解决的介绍UART IIC SPI CAN通信协议详见 https:&#x2F;&#x2F;blog.csdn.net&#x2F;Mr_Guan&#x2F;article&#x2F;details&#x2F;133324610?ops_request_misc&#x3D;&amp;request_id&#x3D;&amp;biz_id&#x3D;102&amp;utm_term&#x3D;%E5%9B%9B%E7%A7%8D%E9%80%9A%E4%">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-09T10:38:22.000Z">
+<meta property="article:modified_time" content="2025-05-10T06:21:13.831Z">
+<meta property="article:author" content="Chris.Y">
+<meta property="article:tag" content="面试经验">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>华勤驱动开发面试经验 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chrisy0618.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="华勤驱动开发面试经验"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-09 18:38" pubdate>
+          2025年5月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">华勤驱动开发面试经验</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1><h2 id="1介绍项目2项目当中遇到的难点以及怎么解决的"><a href="#1介绍项目2项目当中遇到的难点以及怎么解决的" class="headerlink" title="1介绍项目2项目当中遇到的难点以及怎么解决的"></a>1介绍项目<br>2项目当中遇到的难点以及怎么解决的</h2><h1 id="介绍UART-IIC-SPI-CAN通信协议"><a href="#介绍UART-IIC-SPI-CAN通信协议" class="headerlink" title="介绍UART IIC SPI CAN通信协议"></a>介绍UART IIC SPI CAN通信协议</h1><p>详见 <a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_Guan/article/details/133324610?ops_request_misc=&request_id=&biz_id=102&utm_term=%E5%9B%9B%E7%A7%8D%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-133324610.142%5Ev102%5Epc_search_result_base5&spm=1018.2226.3001.4187">https://blog.csdn.net/Mr_Guan/article/details/133324610?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=%E5%9B%9B%E7%A7%8D%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-133324610.142^v102^pc_search_result_base5&amp;spm=1018.2226.3001.4187</a><br>我觉得这个写的非常好。</p>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><h2 id="如何避免野指针"><a href="#如何避免野指针" class="headerlink" title="如何避免野指针"></a>如何避免野指针</h2><p>声明时立即初始化： 指针变量定义时若未明确指向有效内存，应初始化为NULL。<br>动态分配后检查： 使用malloc&#x2F;new分配内存后，需检查指针是否为NULL，避免分配失败后误用。<br>释放内存后立即置空： 调用free或delete后，手动将指针置为NULL，防止成为悬挂指针。<br>不返回栈内存地址： 函数内局部变量的生命周期仅限于函数作用域，返回其地址会导致野指针。应返回动态分配内存或静态变量地址。<br>替代裸指针： std::unique_ptr（独占所有权）和std::shared_ptr（共享所有权）可自动管理内存释放，避免手动失误。</p>
+<h2 id="指针与数组异同点"><a href="#指针与数组异同点" class="headerlink" title="指针与数组异同点"></a>指针与数组异同点</h2><h3 id="关键差异"><a href="#关键差异" class="headerlink" title="关键差异"></a>关键差异</h3><p>1内存分配方式<br>数组：在定义时分配连续的内存空间，大小固定（如 int a[5] 分配20字节）。<br>指针：是一个变量，存储的是地址，可动态指向任意内存（如 int *p &#x3D; malloc(20)）。</p>
+<p>2类型与存储内容<br>数组：存储实际数据，数组名代表首元素地址（如 a 等价于 &amp;a[0]） 。<br>指针：存储地址数据，需通过解引用（*p）访问目标值。</p>
+<p>3大小计算（sizeof）<br>数组：sizeof(a) 返回数组总字节数（如 int a[5] 为20字节）。<br>指针：sizeof(p) 返回指针变量大小（32位系统为4字节，64位为8字节）。</p>
+<h3 id="相似性"><a href="#相似性" class="headerlink" title="相似性"></a>相似性</h3><p>1访问方式的互通性<br>数组可通过指针访问：a[i] 等价于 *(a + i)。<br>指针可模拟数组：p[i] 等价于 *(p + i)（需确保指针指向连续内存）。</p>
+<p>2函数参数传递时的退化<br>数组作为函数参数时，退化为指针（如 void func(int a[]) 实际为 void func(int *a)）。</p>
+<p>3多维数组与指针的关系<br>二维数组名可视为指向一维数组的指针（如 int (*p)[5] &#x3D; a 指向二维数组的行） 。</p>
+<h1 id="define和typedef的异同点"><a href="#define和typedef的异同点" class="headerlink" title="#define和typedef的异同点"></a>#define和typedef的异同点</h1><p>#define预处理指令：在编译前的预处理阶段进行纯文本替换，无类型检查。可定义常量、宏函数、条件编译等，功能更广泛。<br>typedef编译阶段：为已有类型创建类型安全的别名，编译器会进行类型检查。仅用于类型别名：简化复杂类型（如结构体、函数指针）。</p>
+<h1 id="自旋锁和互斥锁的异同点，以及对应使用场景"><a href="#自旋锁和互斥锁的异同点，以及对应使用场景" class="headerlink" title="自旋锁和互斥锁的异同点，以及对应使用场景"></a>自旋锁和互斥锁的异同点，以及对应使用场景</h1><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>自旋锁（Spinlock）</th>
+<th>互斥锁（Mutex）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>等待机制</td>
+<td>忙等待（Busy-wait），持续检查锁状态</td>
+<td>阻塞等待（Sleep-wait），线程挂起并释放CPU</td>
+</tr>
+<tr>
+<td>CPU占用</td>
+<td>占用CPU资源（空转）</td>
+<td>不占用CPU（线程休眠）</td>
+</tr>
+<tr>
+<td>上下文切换</td>
+<td>无切换，延迟低</td>
+<td>需切换线程，延迟较高（约几微秒）</td>
+</tr>
+<tr>
+<td>实现原理</td>
+<td>原子指令（如CAS、Test-And-Set）</td>
+<td>内核调度+等待队列</td>
+</tr>
+<tr>
+<td>锁持有时间</td>
+<td>适合极短临界区（如几条指令）</td>
+<td>适合较长临界区（如I&#x2F;O操作）</td>
+</tr>
+<tr>
+<td>中断安全性</td>
+<td>可用于中断上下文（需禁用中断防死锁）</td>
+<td>不可用于中断（可能引发睡眠）</td>
+</tr>
+<tr>
+<td>多核适用性</td>
+<td>仅多核有效（单核忙等待无意义）</td>
+<td>单核&#x2F;多核均适用</td>
+</tr>
+<tr>
+<td>优先级反转风险</td>
+<td>高（需配合禁用抢占）</td>
+<td>可通过优先级继承缓解</td>
+</tr>
+</tbody></table>
+<h2 id="自旋锁的典型场景"><a href="#自旋锁的典型场景" class="headerlink" title="自旋锁的典型场景"></a>自旋锁的典型场景</h2><p>短临界区：如修改标志位、计数器等极快操作，避免上下文切换开销。<br>中断上下文：内核中断处理、硬件驱动等不可睡眠的环境。<br>多核高竞争：锁竞争不激烈时，自旋锁性能优于互斥锁（如高频短时锁）。</p>
+<h2 id="互斥锁的典型场景"><a href="#互斥锁的典型场景" class="headerlink" title="互斥锁的典型场景"></a>互斥锁的典型场景</h2><p>长临界区：涉及文件I&#x2F;O、复杂计算等耗时操作。<br>用户态线程同步：如多线程共享数据结构、数据库事务等。<br>可睡眠环境：临界区内可能调用阻塞函数（如malloc、sleep）。</p>
+<h1 id="介绍一下内存对齐"><a href="#介绍一下内存对齐" class="headerlink" title="介绍一下内存对齐"></a>介绍一下内存对齐</h1><p>内存对齐是指数据在内存中的存储起始地址必须满足特定边界条件（如2、4、8字节的整数倍），其核心目的是提升CPU访问效率和保证硬件兼容性。<br>原理：CPU通常以固定块（如4字节）访问内存，对齐后数据可一次性读取，而非对齐数据可能需多次操作并拼接，导致性能下降甚至硬件异常（如ARM架构） 。<br>规则：结构体成员按自身大小或编译器对齐系数（如#pragma pack(n)）对齐，整体大小需为最大成员对齐值的整数倍，编译器自动插入填充字节 。<br>优化：通过调整成员顺序（如按对齐值降序排列）或显式指定对齐（如C++的alignas）可减少内存浪费，提升缓存命中率 。</p>
+<h1 id="手撕：用C语言声明一个结构体，结构体包含常量指针和指针常量，在写一个回调函数来打印这个结构体"><a href="#手撕：用C语言声明一个结构体，结构体包含常量指针和指针常量，在写一个回调函数来打印这个结构体" class="headerlink" title="手撕：用C语言声明一个结构体，结构体包含常量指针和指针常量，在写一个回调函数来打印这个结构体"></a>手撕：用C语言声明一个结构体，结构体包含常量指针和指针常量，在写一个回调函数来打印这个结构体</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-comment">// 定义结构体，包含常量指针和指针常量</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span>* ptr_const_value;   <span class="hljs-comment">// 常量指针（指向的值不可修改）</span><br>    <span class="hljs-type">int</span>* <span class="hljs-type">const</span> const_ptr;         <span class="hljs-comment">// 指针常量（指针本身不可修改）</span><br>    <span class="hljs-type">char</span> description[<span class="hljs-number">50</span>];         <span class="hljs-comment">// 附加描述字段</span><br>&#125; ComplexStruct;<br><br><span class="hljs-comment">// 回调函数类型定义</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">void</span> <span class="hljs-params">(*PrintCallback)</span><span class="hljs-params">(<span class="hljs-type">const</span> ComplexStruct*)</span>;<br><br><span class="hljs-comment">// 打印结构体内容的回调函数</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">print_struct</span><span class="hljs-params">(<span class="hljs-type">const</span> ComplexStruct* data)</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Description: %s\n&quot;</span>, data-&gt;description);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Constant Pointer (ptr_const_value): %d\n&quot;</span>, *(data-&gt;ptr_const_value));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Pointer Constant (const_ptr): %d\n&quot;</span>, *(data-&gt;const_ptr));<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> value1 = <span class="hljs-number">42</span>;<br>    <span class="hljs-type">int</span> value2 = <span class="hljs-number">100</span>;<br><br>    <span class="hljs-comment">// 初始化结构体</span><br>    ComplexStruct my_struct = &#123;<br>        .ptr_const_value = &amp;value1,  <span class="hljs-comment">// 常量指针指向value1</span><br>        .const_ptr = &amp;value2,        <span class="hljs-comment">// 指针常量固定指向value2</span><br>        .description = <span class="hljs-string">&quot;Example of const pointer and pointer const&quot;</span><br>    &#125;;<br><br>    <span class="hljs-comment">// 通过回调函数打印结构体</span><br>    PrintCallback callback = print_struct;<br>    callback(&amp;my_struct);<br><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/object-Object/" class="category-chain-item">[object Object]</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/" class="print-no-link">#面试经验</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>华勤驱动开发面试经验</div>
+      <div>https://chrisy0618.github.io/2025/05/09/huaqin/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Chris.Y</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年5月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/22/pointer/" title="pointer">
+                        <span class="hidden-mobile">pointer</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
